@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe List</title>
+    <style>
+        /* Add your CSS styles here for layout, buttons, and search bar */
+    </style>
+</head>
+<body>
+    <h1>Recipe List</h1>
+
+    <!-- Search Bar -->
+    <input type="text" id="searchInput" placeholder="Search recipes...">
+    <button onclick="searchRecipes()">Search</button>
+
+    <!-- Recipe List -->
+    <ul id="recipeList">
+        <!-- Example Recipe Item -->
+        <li>
+            <img src="thumbnail_image_url.jpg" alt="Recipe Thumbnail">
+            <h2>Recipe Title 1</h2>
+            <p>Brief description of the recipe.</p>
+            <button onclick="viewRecipe(1)">View Details</button>
+            <button onclick="deleteRecipe(1)">Delete</button>
+        </li>
+        <!-- Add more recipe items here -->
+    </ul>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Sample recipe data (replace with actual data)
+        const recipes = [
+            {
+                id: 1,
+                title: "MOMO",
+                description: "Momo bring a sense of joy and contentment..",
+                thumbnail: "image/momo.jpg",
+                details: "Momo is a type of steamed filled dumpling in Tibetan and Nepali cuisine that is also popular in neighbouring Bhutan and India. ... ."
+
+            },
+            
+            {
+                id: 2,
+                title: "PIZZA",
+                description: "Pizza is the one thing that I will never get tired of..",
+                thumbnail: "image/pizza.jpg",
+                details: "The flatbreads with tomato sauce, cheese, and toppings, was born along the western coast of Italy, in the city of Naples.."
+
+
+            },
+            {
+                 id: 2,
+                title: "NOODLES",
+                description: "Noodle happiness in every bite..",
+                thumbnail: "image/noodles.jpg",
+                details: "Noodles existed in China and Asia long before pasta appeared in the Mediterranean world, and the legend goes that Marco Polo brought pasta to Italy from China in the 13th century.."
+
+
+            },
+            {
+               title: "BURGER",
+                description: "I'm not a veggie, but I'm feeling extra 'beef-icient' with this burger .",
+                thumbnail: "image/25 burger.jpg",
+                details: "The origins of the burger are shrouded in mystery, but most food historians agree that it was invented in the United States in the late 1800s or early 1900s.."  
+            }
+            //Add more recipe objects here
+        ];
+
+        // Function to display recipes
+        function displayRecipes() {
+            const recipeList = document.getElementById("recipeList");
+            recipeList.innerHTML = "";
+
+            recipes.forEach(recipe => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <img src="${recipe.thumbnail}" alt="${recipe.title}">
+                    <h2>${recipe.title}</h2>
+                    <p>${recipe.description}</p>
+                    <button onclick="viewRecipe(${recipe.id})">View Details</button>
+                    <button onclick="deleteRecipe(${recipe.id})">Delete</button>
+                `;
+                recipeList.appendChild(listItem);
+            });
+        }
+
+        // Function to search for recipes
+        function searchRecipes() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const filteredRecipes = recipes.filter(recipe => recipe.title.toLowerCase().includes(searchInput) || recipe.description.toLowerCase().includes(searchInput));
+            displayRecipes(filteredRecipes);
+        }
+
+        // Function to view a recipe's full details (replace with your implementation)
+        function viewRecipe(recipeId) {
+            // Implement this function to display the full details of the recipe.
+        }
+
+        // Function to delete a recipe (replace with your implementation)
+        function deleteRecipe(recipeId) {
+            // Implement this function to delete the recipe.
+        }
+
+        // Initial display of recipes
+        displayRecipes();
+    </script>
+</body>
+</html>
